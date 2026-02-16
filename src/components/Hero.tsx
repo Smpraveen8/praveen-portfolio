@@ -36,7 +36,7 @@ export default function Hero() {
             </h1>
             <h2 className="text-2xl text-slate-600 font-medium mb-6">
               Associate Software Engineer <br />
-              <span className="text-blue-600 font-semibold">Backend & Full Stack Java Developer</span>
+              <span className="text-blue-600 font-semibold">Full Stack Java Developer</span>
             </h2>
             
             <p className="text-lg text-slate-600 leading-relaxed max-w-xl">
