@@ -1,4 +1,4 @@
-import { Briefcase, Calendar } from 'lucide-react';
+import { Briefcase, Calendar, MapPin, ArrowRight } from 'lucide-react';
 
 export default function Experience() {
   const experiences = [
@@ -7,16 +7,18 @@ export default function Experience() {
       company: 'MomentumMerge Consultancy Services Pvt. Ltd.',
       location: 'Bengaluru, India',
       period: 'July 2025 – Present',
+      current: true,
+      description: 'Leading backend architecture and full-stack development for enterprise ATS platforms.',
       achievements: [
-        'Led backend development of MomentumJobs, an enterprise ATS platform, contributing across the full SDLC from requirement analysis to production deployment',
-        'Architected scalable REST APIs using Spring Boot microservices, achieving improved response times through Redis caching and optimized query design',
-        'Designed and implemented secure JWT + Refresh Token authentication with RBAC, ensuring enterprise-grade security and session management',
-        'Built AI-powered resume scoring pipeline using Python FastAPI with SentenceTransformers and KeyBERT for semantic analysis and keyword extraction',
-        'Developed real-time notification system using WebSocket for instant recruiter-candidate communication and status updates',
-        'Collaborated with React frontend team to define API contracts and ensure seamless integration with Redux state management',
-        'Coordinated AWS deployments (EC2, RDS, S3) with DevOps team, managing environment configuration and secrets in production-like environments',
-        'Implemented event-driven architecture using Outbox Pattern for reliable distributed system communication',
-        'Designed optimized MySQL and MongoDB schemas with proper indexing strategies for high-performance query execution',
+        'Working on MomentumJobs, a large-scale enterprise job portal and ATS platform serving recruiters, candidates, and administrators.',
+        'Contributing to backend architecture, distributed systems design, security infrastructure, database modeling, notification workflows, and cloud deployment pipelines.',
+        'Collaborating across frontend, ML, DevOps, and product teams to deliver high-availability, secure, and scalable production systems.',
+        'Designed and implemented stateless JWT + Refresh Token authentication with secure role-based access control (RBAC).',
+        'Built a distributed In-App and Email Notification platform using the Outbox Event Pattern, scheduled workers, and retry mechanisms.',
+        'Designed complete relational database schema for ATS, job postings, applications, recruiters, users, and audit trails.',
+        'Implemented environment-based configuration management across Dev, Test, Staging, and Production using Spring profiles.',
+        'Developed reusable DTO layers, MapStruct mappers, centralized exception handling, and structured logging.',
+        'Integrated AWS RDS and Amazon S3 for scalable database and document storage with pre-signed URLs.'
       ],
     },
     {
@@ -24,54 +26,84 @@ export default function Experience() {
       company: 'MomentumMerge Consultancy Services Pvt. Ltd.',
       location: 'Bengaluru, India',
       period: 'Feb 2025 – July 2025',
+      current: false,
+      description: 'Trained in Spring Boot, AWS, and Microservices while contributing to production platforms.',
       achievements: [
-        'Assisted in backend API development and frontend state management modules for ATS workflows',
-        'Contributed to REST API design, unit testing, debugging, and CI/CD-based deployment pipelines',
-        'Supported integration testing and validation in staging and production-like environments',
+        'Trained in Spring Boot, AWS, Redux Toolkit, Microservices, and REST API design while contributing to the MomentumJobs production platform.',
+        'Worked on backend services, frontend state management, ATS workflows, distributed file storage systems, and cloud deployments.',
+        'Gained hands-on experience with enterprise coding standards, layered architecture, system design principles, and production-grade deployments.',
+        'Built full-stack features for MomentumJobs using Spring Boot, React (TypeScript), Redux Toolkit, and MySQL.',
+        'Designed and delivered the complete ATS module by integrating a Python FastAPI microservice for resume parsing.',
+        'Implemented NLP-driven resume scoring pipeline using SentenceTransformers, KeyBERT, and Scikit-learn.',
+        'Built multi-environment file storage abstraction: Local filesystem for Dev/Test and Amazon S3 for Production.',
+        'Developed an Admin Ticket Management System to track operational issues and user escalations.',
+        'Implemented global state management using Redux Toolkit to reduce component coupling.'
       ],
     },
   ];
 
   return (
-    <section id="experience" className="py-20 bg-slate-50">
-      <div className="max-w-7xl mx-auto px-6">
-        <h2 className="text-4xl font-bold text-slate-800 mb-12 text-center">
-          Professional Experience
-        </h2>
+    // Reduced padding (py-16) to minimize top/bottom space
+    <section id="experience" className="py-16 bg-white border-b border-slate-100">
+      <div className="max-w-5xl mx-auto px-6">
+        
+        {/* Compact Header */}
+        <div className="mb-10 flex items-center gap-4">
+           <h2 className="text-3xl font-bold text-slate-900">Professional Experience</h2>
+           <div className="h-px flex-1 bg-slate-200 mt-2"></div>
+        </div>
 
-        <div className="space-y-12">
+        <div className="grid gap-8">
           {experiences.map((exp, index) => (
-            <div
-              key={index}
-              className="bg-white rounded-lg shadow-lg p-8 hover:shadow-xl transition-shadow"
+            <div 
+              key={index} 
+              className="group bg-slate-50/50 rounded-xl p-6 border border-slate-200 hover:border-blue-300 hover:shadow-sm transition-all duration-300"
             >
-              <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
+              
+              {/* Header Row: Title & Date */}
+              <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-4 gap-2">
                 <div>
-                  <h3 className="text-2xl font-bold text-slate-800 mb-2">
+                  <h3 className="text-xl font-bold text-slate-900 group-hover:text-blue-700 transition-colors">
                     {exp.title}
                   </h3>
-                  <div className="flex items-center gap-2 text-blue-600 mb-2">
-                    <Briefcase size={18} />
-                    <span className="font-semibold">{exp.company}</span>
+                  <div className="flex flex-wrap items-center gap-x-4 gap-y-1 mt-1 text-sm font-medium text-slate-600">
+                    <span className="flex items-center gap-1.5 text-blue-600">
+                      <Briefcase size={16} />
+                      {exp.company}
+                    </span>
+                    <span className="hidden md:inline text-slate-300">|</span>
+                    <span className="flex items-center gap-1.5 text-slate-500">
+                      <MapPin size={16} />
+                      {exp.location}
+                    </span>
                   </div>
-                  <p className="text-slate-600">{exp.location}</p>
                 </div>
-                <div className="flex items-center gap-2 text-slate-600 mt-4 md:mt-0">
-                  <Calendar size={18} />
-                  <span className="font-medium">{exp.period}</span>
-                </div>
+
+                <span className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold border shrink-0 w-fit
+                  ${exp.current 
+                    ? 'bg-blue-600 text-white border-blue-600 shadow-sm' 
+                    : 'bg-white text-slate-600 border-slate-200'}`}>
+                  <Calendar size={12} /> {exp.period}
+                </span>
               </div>
 
-              <ul className="space-y-3">
-                {exp.achievements.map((achievement, idx) => (
-                  <li key={idx} className="flex gap-3">
-                    <span className="text-blue-600 mt-1.5 flex-shrink-0">•</span>
-                    <span className="text-slate-700 leading-relaxed">
-                      {achievement}
-                    </span>
-                  </li>
+              {/* Description */}
+              <p className="text-sm text-slate-600 italic mb-6 border-l-2 border-blue-200 pl-3">
+                {exp.description}
+              </p>
+
+              {/* Achievements Grid */}
+              <div className="grid md:grid-cols-1 gap-3">
+                {exp.achievements.map((item, idx) => (
+                  <div key={idx} className="flex gap-3 items-start">
+                    <div className="mt-1.5 min-w-[6px] h-[6px] rounded-full bg-blue-400 group-hover:bg-blue-600 transition-colors"></div>
+                    <p className="text-sm text-slate-700 leading-relaxed">
+                      {item}
+                    </p>
+                  </div>
                 ))}
-              </ul>
+              </div>
+
             </div>
           ))}
         </div>

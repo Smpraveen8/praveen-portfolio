@@ -1,103 +1,91 @@
+import { Code2, Layout, Database, Brain, Network, Terminal, Cpu, Server } from 'lucide-react';
+
 export default function Skills() {
-  const skillCategories = [
+  const skillSets = [
     {
-      title: 'Backend & APIs',
-      skills: [
-        'Java',
-        'Spring Boot',
-        'Spring MVC',
-        'Spring Security',
-        'REST APIs',
-        'Microservices',
-        'Python (FastAPI)',
-        'WebSocket',
-        'JWT',
-        'RBAC',
-      ],
+      label: "Backend & Core",
+      icon: Code2,
+      color: "blue",
+      skills: ["Java", "Spring Boot", "Spring MVC", "Spring Security", "REST APIs", "Microservices", "Python", "JWT", "RBAC"]
     },
     {
-      title: 'Frontend',
-      skills: [
-        'React.js',
-        'TypeScript',
-        'JavaScript',
-        'Redux Toolkit',
-        'Axios',
-        'HTML/CSS',
-        'Tailwind CSS',
-      ],
+      label: "Frontend",
+      icon: Layout,
+      color: "indigo",
+      skills: ["React.js", "TypeScript", "JavaScript", "Redux Toolkit", "Axios", "HTML5", "CSS3", "Tailwind"]
     },
     {
-      title: 'AI & NLP',
-      skills: [
-        'SentenceTransformers',
-        'KeyBERT',
-        'Scikit-learn',
-        'PyMuPDF',
-        'Semantic Similarity',
-        'Pydantic',
-        'Email-Validator',
-      ],
+      label: "Database & Cloud",
+      icon: Database,
+      color: "cyan",
+      skills: ["MySQL", "PostgreSQL", "MongoDB", "AWS EC2", "AWS RDS", "AWS S3", "Docker", "Linux"]
     },
     {
-      title: 'Databases',
-      skills: [
-        'MySQL',
-        'PostgreSQL',
-        'MongoDB',
-        'Redis',
-        'Schema Design',
-        'Indexing',
-        'Query Optimization',
-        'ACID Transactions',
-      ],
+      label: "AI & NLP Stack",
+      icon: Brain,
+      color: "purple",
+      skills: ["SentenceTransformers", "KeyBERT", "Scikit-learn", "PyMuPDF", "Semantic Similarity", "NLP"]
     },
     {
-      title: 'Cloud & DevOps',
-      skills: [
-        'AWS EC2',
-        'AWS RDS',
-        'AWS S3',
-        'Docker',
-        'Linux',
-        'CI/CD',
-        'Environment Config',
-      ],
+      label: "System Design",
+      icon: Server,
+      color: "emerald",
+      skills: ["Microservices", "Event-Driven", "Outbox Pattern", "Distributed Systems", "Load Balancing", "Caching"]
     },
     {
-      title: 'Architecture & Design',
-      skills: [
-        'Microservices Architecture',
-        'Distributed Systems',
-        'Event-Driven Systems',
-        'Outbox Pattern',
-        'SOLID Principles',
-        'REST API Design',
-      ],
+      label: "DevOps & Tools",
+      icon: Terminal,
+      color: "slate",
+      skills: ["Git", "GitHub", "Jira", "Postman", "Maven", "CI/CD Pipelines", "Agile/Scrum"]
     },
+    {
+      label: "Data Structures",
+      icon: Cpu,
+      color: "orange",
+      skills: ["Arrays", "Linked Lists", "Stacks", "Queues", "Trees", "Graphs", "HashMaps", "Heaps"]
+    },
+    {
+      label: "Algorithms",
+      icon: Network,
+      color: "rose",
+      skills: ["Sliding Window", "Two Pointers", "Binary Search", "Sorting", "Greedy", "DP", "Complexity"]
+    }
   ];
 
   return (
-    <section id="skills" className="py-20 bg-slate-50">
+    // Reduced padding from py-24 to py-12
+    <section id="skills" className="py-12 bg-slate-50/50 border-t border-slate-100">
       <div className="max-w-7xl mx-auto px-6">
-        <h2 className="text-4xl font-bold text-slate-800 mb-12 text-center">
-          Technical Skills
-        </h2>
+        
+        {/* Section Header */}
+        <div className="mb-12">
+          <h2 className="text-3xl font-bold text-slate-900 mb-3 tracking-tight">
+            Technical <span className="text-blue-600">Expertise</span>
+          </h2>
+          <div className="w-12 h-1.5 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full"></div>
+        </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {skillCategories.map((category, index) => (
-            <div
-              key={index}
-              className="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow"
+        {/* Skills Grid */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          {skillSets.map((set, index) => (
+            <div 
+              key={index} 
+              className="group bg-white border border-slate-200 rounded-2xl p-5 hover:border-blue-400/50 hover:shadow-xl hover:shadow-blue-500/5 transition-all duration-300 hover:-translate-y-1"
             >
-              <h3 className="text-xl font-bold text-slate-800 mb-4 border-b-2 border-blue-600 pb-2">
-                {category.title}
-              </h3>
-              <div className="flex flex-wrap gap-2">
-                {category.skills.map((skill, idx) => (
-                  <span
-                    key={idx}
-                    className="px-3 py-1.5 bg-slate-100 text-slate-700 rounded-md text-sm font-medium hover:bg-blue-100 hover:text-blue-700 transition-colors"
+              {/* Header: Icon + Label */}
+              <div className="flex items-center gap-3 mb-5">
+                <div className={`p-2.5 bg-slate-50 group-hover:bg-blue-50 text-slate-600 group-hover:text-blue-600 rounded-xl transition-colors duration-300`}>
+                  <set.icon size={22} strokeWidth={2.5} />
+                </div>
+                <h3 className="font-bold text-slate-800 tracking-tight leading-tight">{set.label}</h3>
+              </div>
+
+              {/* Skill Tags */}
+              <div className="flex flex-wrap gap-1.5">
+                {set.skills.map((skill, idx) => (
+                  <span 
+                    key={idx} 
+                    className="px-2.5 py-1 bg-white text-slate-600 text-[11px] font-semibold rounded-md border border-slate-100 group-hover:border-blue-100 group-hover:bg-blue-50/30 transition-all duration-200"
                   >
                     {skill}
                   </span>
@@ -105,31 +93,6 @@ export default function Skills() {
               </div>
             </div>
           ))}
-        </div>
-
-        <div className="mt-12 bg-white rounded-lg shadow-lg p-8">
-          <h3 className="text-xl font-bold text-slate-800 mb-4 text-center">
-            Development Practices
-          </h3>
-          <div className="flex flex-wrap justify-center gap-3">
-            {[
-              'Agile/Scrum',
-              'Code Reviews',
-              'API Testing (Postman)',
-              'Unit Testing',
-              'Integration Testing',
-              'Git Version Control',
-              'CI/CD Pipelines',
-              'Documentation',
-            ].map((practice, idx) => (
-              <span
-                key={idx}
-                className="px-4 py-2 bg-blue-100 text-blue-700 rounded-lg font-medium"
-              >
-                {practice}
-              </span>
-            ))}
-          </div>
         </div>
       </div>
     </section>
