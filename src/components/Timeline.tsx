@@ -3,7 +3,7 @@ import { Download, Calendar, ArrowRight, MapPin } from 'lucide-react';
 export default function Timeline() {
   const timelineData = [
     {
-      id: 1,
+      id: 4,
       title: 'Bachelor of Engineering',
       role: 'Electronics & Communication',
       org: 'KPR Institute of Engineering and Technology',
@@ -13,7 +13,7 @@ export default function Timeline() {
       link: null
     },
     {
-      id: 2,
+      id: 3,
       title: 'Full Stack Certification',
       role: 'Java Full Stack Development',
       org: 'Tap Academy',
@@ -23,7 +23,7 @@ export default function Timeline() {
       link: { text: 'View Certificate', url: '/Tap Academy Certificate.pdf' }
     },
     {
-      id: 3,
+      id: 2,
       title: 'Associate Software Intern',
       role: 'Backend & Frontend',
       org: 'MomentumMerge Consultancy Services Pvt. Ltd',
@@ -33,7 +33,7 @@ export default function Timeline() {
       link: null
     },
     {
-      id: 4,
+      id: 1,
       title: 'Associate Software Engineer',
       role: 'Full Stack Engineer',
       org: 'MomentumMerge Consultancy Services Pvt. Ltd',
